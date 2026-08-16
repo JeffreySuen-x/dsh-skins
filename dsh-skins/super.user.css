@@ -1,0 +1,333 @@
+/* ==UserStyle==
+@name         Super skin for DeepSeek Harness
+@namespace    deepseek-ai.deepseek-harness
+@version      1.0.0
+@description  超级皮肤：全效合集——场景背景、玻璃拟态、光标跟随描边、聚光灯、3D 倾斜、扫光、点击粒子。Cosmic backdrop plus the full pointer-effects layer for the DeepSeek Harness Web GUI.
+@author       DeepSeek Harness
+@license      MIT
+==/UserStyle== */
+
+/* super skin — part of the DeepSeek Harness skin gallery.
+   Scene backdrop + grain, glass surfaces, and the shared motion vocabulary. */
+
+html,
+body {
+  background: #eef4ff;
+}
+
+body {
+  position: relative;
+  z-index: 0;
+  --dsh-skin-accent: #4d6bfe;
+  --dsh-skin-glow: rgba(77, 107, 254, 0.5);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 810' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23dcebff'/%3E%3Cstop offset='.55' stop-color='%23b9d4ff'/%3E%3Cstop offset='1' stop-color='%238fb8f5'/%3E%3C/linearGradient%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='60'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='1440' height='810' fill='url(%23s)'/%3E%3Cellipse cx='380' cy='190' rx='360' ry='200' fill='%23ffffff' opacity='.55' filter='url(%23b)'/%3E%3Cellipse cx='1120' cy='620' rx='420' ry='230' fill='%23b7c8fe' opacity='.5' filter='url(%23b)'/%3E%3Cellipse cx='820' cy='120' rx='300' ry='140' fill='%23ffffff' opacity='.5' filter='url(%23b)'/%3E%3Ccircle cx='930' cy='200' r='2' fill='%23fff' opacity='.9'/%3E%3Ccircle cx='1180' cy='150' r='2.2' fill='%23fff' opacity='.9'/%3E%3Ccircle cx='300' cy='90' r='1.6' fill='%23fff' opacity='.8'/%3E%3Ccircle cx='500' cy='260' r='1.4' fill='%23fff' opacity='.7'/%3E%3Cpath d='M100 80 L340 190' stroke='%23ffffff' stroke-width='2' opacity='.7' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.4;
+}
+
+body[data-ds-dark-theme] {
+  background: #0a0f2e;
+  --dsh-skin-accent: #5686fe;
+  --dsh-skin-glow: rgba(86, 134, 254, 0.6);
+}
+
+body[data-ds-dark-theme]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 810' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230a0f2e'/%3E%3Cstop offset='.55' stop-color='%2314215c'/%3E%3Cstop offset='1' stop-color='%232b3f8f'/%3E%3C/linearGradient%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='70'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='1440' height='810' fill='url(%23s)'/%3E%3Cellipse cx='340' cy='170' rx='360' ry='200' fill='%234d6bfe' opacity='.38' filter='url(%23b)'/%3E%3Cellipse cx='1120' cy='650' rx='400' ry='220' fill='%237c5cff' opacity='.3' filter='url(%23b)'/%3E%3Cellipse cx='760' cy='430' rx='260' ry='170' fill='%2322d3ee' opacity='.16' filter='url(%23b)'/%3E%3Ccircle cx='180' cy='100' r='1.8' fill='%23fff' opacity='.8'/%3E%3Ccircle cx='420' cy='70' r='1.4' fill='%23fff' opacity='.6'/%3E%3Ccircle cx='700' cy='110' r='1.6' fill='%23fff' opacity='.7'/%3E%3Ccircle cx='960' cy='60' r='1.4' fill='%23fff' opacity='.6'/%3E%3Ccircle cx='1240' cy='120' r='1.8' fill='%23fff' opacity='.7'/%3E%3Ccircle cx='1340' cy='60' r='1.2' fill='%23fff' opacity='.5'/%3E%3Ccircle cx='560' cy='180' r='1.5' fill='%23fff' opacity='.6'/%3E%3Ccircle cx='1080' cy='240' r='1.5' fill='%23fff' opacity='.6'/%3E%3Ccircle cx='140' cy='300' r='1.3' fill='%23fff' opacity='.5'/%3E%3Cpath d='M90 70 L320 180' stroke='%23e9d5ff' stroke-width='2' opacity='.75' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* Glass surfaces: translucent fills over the scene (light glass stays
+   thin so the backdrop reads clearly). */
+body {
+  --dsw-alias-bg-base: rgba(255, 255, 255, 0.44);
+  --dsw-alias-bg-layer-1: rgba(255, 255, 255, 0.52);
+  --dsw-alias-bg-layer-2: rgba(255, 255, 255, 0.62);
+  --dsw-alias-bg-overlay: rgba(255, 255, 255, 0.78);
+  --dsw-alias-button-elevated-fill: rgba(255, 255, 255, 0.74);
+  --dsw-alias-button-floating-fill: rgba(255, 255, 255, 0.74);
+  --dsw-specific-sidebar-fill: rgba(236, 242, 253, 0.4);
+  --dsw-specific-menu: rgba(255, 255, 255, 0.88);
+  --dsw-specific-selector: rgba(255, 255, 255, 0.72);
+  --dsw-specific-tip: rgba(255, 255, 255, 0.72);
+  --dsw-specific-bubble: rgba(239, 246, 255, 0.8);
+  --dsw-specific-bubble-highlight: rgba(219, 234, 254, 0.85);
+}
+
+body[data-ds-dark-theme] {
+  --dsw-alias-bg-base: rgba(19, 19, 23, 0.5);
+  --dsw-alias-bg-layer-1: rgba(35, 35, 36, 0.56);
+  --dsw-alias-bg-layer-2: rgba(44, 44, 46, 0.64);
+  --dsw-alias-bg-overlay: rgba(53, 53, 54, 0.78);
+  --dsw-alias-button-elevated-fill: rgba(53, 53, 54, 0.76);
+  --dsw-alias-button-floating-fill: rgba(44, 44, 46, 0.76);
+  --dsw-specific-sidebar-fill: rgba(12, 17, 48, 0.45);
+  --dsw-specific-menu: rgba(44, 44, 46, 0.9);
+  --dsw-specific-selector: rgba(53, 53, 54, 0.8);
+  --dsw-specific-tip: rgba(53, 53, 54, 0.8);
+  --dsw-specific-bubble: rgba(30, 42, 84, 0.75);
+  --dsw-specific-bubble-highlight: rgba(40, 56, 108, 0.8);
+}
+
+/* Accent palette. */
+body {
+  --dsw-alias-brand-primary: #4d6bfe;
+  --dsw-alias-brand-primary-invert: #ffffff;
+  --dsw-alias-brand-text: #4d6bfe;
+  --dsw-alias-button-primary-hover: #3a65c2;
+  --dsw-alias-button-info-fill: #4d6bfe;
+  --dsw-alias-button-info-hover: #3a65c2;
+  --dsw-alias-button-link-fill: #4d6bfe;
+  --dsw-alias-button-link-hover: #3a65c2;
+  --dsw-alias-interactive-bg-hover: rgb(from #4d6bfe r g b / 0.06);
+  --dsw-alias-interactive-bg-hover-accent: rgb(from #4d6bfe r g b / 0.12);
+  --dsw-alias-interactive-bg-active: rgb(from #4d6bfe r g b / 0.16);
+  --dsw-alias-state-business-primary: #4d6bfe;
+  --dsw-specific-sidebar-nav-item-active-accent: #4d6bfe;
+}
+
+body[data-ds-dark-theme] {
+  --dsw-alias-brand-primary: #5686fe;
+  --dsw-alias-brand-primary-invert: #ffffff;
+  --dsw-alias-brand-text: #5686fe;
+  --dsw-alias-button-primary-hover: #679efe;
+  --dsw-alias-button-info-fill: #5686fe;
+  --dsw-alias-button-info-hover: #679efe;
+  --dsw-alias-button-link-fill: #5686fe;
+  --dsw-alias-button-link-hover: #679efe;
+  --dsw-alias-interactive-bg-hover: rgb(from #5686fe r g b / 0.08);
+  --dsw-alias-interactive-bg-hover-accent: rgb(from #5686fe r g b / 0.16);
+  --dsw-alias-interactive-bg-active: rgb(from #5686fe r g b / 0.22);
+  --dsw-alias-state-business-primary: #5686fe;
+  --dsw-specific-sidebar-nav-item-active-accent: #5686fe;
+}
+
+/* Motion vocabulary (shared, recolored per skin through the skin vars). */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes ds-whale-bob-glow {
+  0% { transform: translateY(0.25px) rotate(0deg); filter: drop-shadow(0 2px 8px var(--dsh-skin-glow)); }
+  30% { transform: translateY(-0.25px) rotate(10deg); filter: drop-shadow(0 2px 12px var(--dsh-skin-glow)); }
+  50% { transform: translateY(-1px) rotate(8deg); filter: drop-shadow(0 2px 14px var(--dsh-skin-glow)); }
+  70% { transform: translateY(-0.25px) rotate(10deg); filter: drop-shadow(0 2px 12px var(--dsh-skin-glow)); }
+  100% { transform: translateY(0.25px) rotate(0deg); filter: drop-shadow(0 2px 8px var(--dsh-skin-glow)); }
+}
+
+@keyframes ds-sparkle-twinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(0.55) rotate(18deg); opacity: 0.35; }
+}
+
+@keyframes rotating-border {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+textarea {
+  caret-color: var(--dsh-skin-accent);
+}
+
+svg[viewBox='0 0 23.16 17.04'] {
+  filter: drop-shadow(0 2px 8px var(--dsh-skin-glow));
+}
+
+svg[viewBox='0 0 182 24'] {
+  filter: drop-shadow(0 1px 6px var(--dsh-skin-glow));
+}
+
+/* Composer sparkles. */
+[data-composer-seat] {
+  position: relative;
+}
+
+[data-composer-seat]::before,
+[data-composer-seat]::after {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+  background: linear-gradient(180deg, #ffffff 0%, #9db4ff 100%);
+  pointer-events: none;
+}
+
+[data-composer-seat]::before {
+  top: -6px;
+  left: 16%;
+}
+
+[data-composer-seat]::after {
+  top: -3px;
+  right: 24%;
+  width: 8px;
+  height: 8px;
+}
+
+body[data-ds-dark-theme] [data-composer-seat]::before,
+body[data-ds-dark-theme] [data-composer-seat]::after {
+  background: linear-gradient(180deg, #e0e9ff 0%, #5686fe 100%);
+}
+
+/* Composer card: always-on orbiting star border. */
+[data-composer-card] {
+  position: relative;
+}
+
+[data-composer-card]::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    rgb(from #4d6bfe r g b / 0.25) 0,
+    rgba(255, 255, 255, 0.95) 8%,
+    rgb(from #4d6bfe r g b / 0.55) 16%,
+    rgb(from #4d6bfe r g b / 0.2) 30%,
+    rgb(from #4d6bfe r g b / 0.15) 55%,
+    rgba(255, 255, 255, 0.9) 62%,
+    rgb(from #4d6bfe r g b / 0.5) 70%,
+    rgb(from #4d6bfe r g b / 0.2) 84%,
+    rgb(from #4d6bfe r g b / 0.25) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+body[data-ds-dark-theme] [data-composer-card]::before {
+  background: conic-gradient(
+    from var(--border-angle),
+    rgb(from #5686fe r g b / 0.28) 0,
+    rgba(255, 255, 255, 0.9) 8%,
+    rgb(from #5686fe r g b / 0.6) 16%,
+    rgb(from #5686fe r g b / 0.22) 30%,
+    rgb(from #5686fe r g b / 0.16) 55%,
+    rgba(255, 255, 255, 0.85) 62%,
+    rgb(from #5686fe r g b / 0.55) 70%,
+    rgb(from #5686fe r g b / 0.22) 84%,
+    rgb(from #5686fe r g b / 0.28) 100%
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  svg[viewBox='0 0 23.16 17.04'] {
+    transform-box: fill-box;
+    transform-origin: 50% 85%;
+    animation: ds-whale-bob-glow 3.2s linear infinite;
+  }
+
+  [data-composer-seat]::before {
+    animation: ds-sparkle-twinkle 2.4s ease-in-out infinite;
+  }
+
+  [data-composer-seat]::after {
+    animation: ds-sparkle-twinkle 2.4s ease-in-out 0.8s infinite;
+  }
+
+  [data-composer-card]::before {
+    animation: rotating-border 8s linear infinite;
+  }
+
+  [data-composer-card]:hover::before {
+    opacity: 0.8;
+  }
+
+  [data-composer-card]:focus-within::before {
+    opacity: 1;
+    animation-duration: 6s;
+  }
+
+  [data-composer-card]:hover {
+    box-shadow: 0 0 0 1px rgb(from #4d6bfe r g b / 0.18), 0 4px 20px rgb(from #4d6bfe r g b / 0.12);
+  }
+
+  [data-composer-card]:focus-within {
+    box-shadow: 0 0 0 1px rgb(from #4d6bfe r g b / 0.2), 0 4px 24px rgb(from #4d6bfe r g b / 0.14);
+  }
+
+  /* Pointer-driven: cursor-following border, spotlight, tilt, and glare. */
+  [data-composer-card] {
+    transition: transform 0.18s ease-out;
+    transform: perspective(900px) rotateX(var(--dsh-tilt-y, 0deg)) rotateY(var(--dsh-tilt-x, 0deg));
+    background-image: radial-gradient(
+      640px circle at var(--dsh-card-x, 50%) var(--dsh-card-y, 50%),
+      rgba(255, 255, 255, var(--dsh-card-spot, 0)),
+      transparent 60%
+    );
+  }
+
+  [data-composer-card]::before {
+    background: conic-gradient(
+      from var(--dsh-card-angle, var(--border-angle)),
+      rgb(from #4d6bfe r g b / 0.25) 0,
+      rgba(255, 255, 255, 0.95) 8%,
+      rgb(from #4d6bfe r g b / 0.55) 16%,
+      rgb(from #4d6bfe r g b / 0.2) 30%,
+      rgb(from #4d6bfe r g b / 0.15) 55%,
+      rgba(255, 255, 255, 0.9) 62%,
+      rgb(from #4d6bfe r g b / 0.5) 70%,
+      rgb(from #4d6bfe r g b / 0.2) 84%,
+      rgb(from #4d6bfe r g b / 0.25) 100%
+    );
+  }
+
+  body[data-ds-dark-theme] [data-composer-card]::before {
+    background: conic-gradient(
+      from var(--dsh-card-angle, var(--border-angle)),
+      rgb(from #5686fe r g b / 0.28) 0,
+      rgba(255, 255, 255, 0.9) 8%,
+      rgb(from #5686fe r g b / 0.6) 16%,
+      rgb(from #5686fe r g b / 0.22) 30%,
+      rgb(from #5686fe r g b / 0.16) 55%,
+      rgba(255, 255, 255, 0.85) 62%,
+      rgb(from #5686fe r g b / 0.55) 70%,
+      rgb(from #5686fe r g b / 0.22) 84%,
+      rgb(from #5686fe r g b / 0.28) 100%
+    );
+  }
+
+  /* Send button: glare sweep across the icon circle on hover. */
+  [data-composer-card] button:last-of-type {
+    position: relative;
+    overflow: hidden;
+  }
+
+  [data-composer-card] button:last-of-type::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.45) 50%, transparent 60%);
+    transform: translateX(-130%);
+    transition: transform 0.6s ease;
+  }
+
+  [data-composer-card] button:last-of-type:hover::after {
+    transform: translateX(130%);
+  }
+}
